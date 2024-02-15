@@ -1,99 +1,65 @@
 {% extends 'base.html' %}
 
+{% block content %}
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        flex-direction: column;
+    }
 
-    {% block content %}
-   
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            flex-direction: column;
-        }
+    #images {
+        display: flex;
+        justify-content: 33%;
+        max-width: 600px;
+        width: 100%;
+        border-radius: 50%;
+    }
 
-        #images {
-            display: flex;
-            justify-content: 33%;
-            max-width: 600px;
-            width: 100%;
-            border-radius: 50%;
-        }
+    img {
+        max-width: 100%;
+        max-height: 100%;
+        cursor: pointer;
+    }
 
-        img {
-            max-width: 100%;
-            max-height: 100%;
-            cursor: pointer;
-        }
-
-        #registrationForm {
-            max-width: 600px;
-            width: 100%;
-            display: none; /* Hidden by default */
-        }
-
-        .role-name {
-            font-size: 30px;
-            text-align: center;
-            
-        }
-    </style>
-    <div id="images">
-        <div style="text-align: center;">
-            <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRwHsoSpUuSFDXu7aMkSs4K9IccU5rcuhZ6Wv3YJMP2uBAFtbwE" style="margin-left:10px;border-radius: 50%;width:200px;height:200px" alt="Image 1" onclick="showForm('https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRwHsoSpUuSFDXu7aMkSs4K9IccU5rcuhZ6Wv3YJMP2uBAFtbwE','faculty')">
-            <div class="role-name">Faculty</div>
-        </div>
-
-        <div style="text-align: center;">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNtk5xpLylbMkOkAKQZcPTMzDVHxTHfLnTSUoVMXbRDYjLFIvH" style="margin-left:10px;border-radius: 50%;width:200px;height:200px" alt="Image 2" onclick="showForm('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNtk5xpLylbMkOkAKQZcPTMzDVHxTHfLnTSUoVMXbRDYjLFIvH')">
-            <div class="role-name">User</div>
-        </div>
-
-        <div style="text-align: center;">
-            <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQZD56yx9T1n0jTH4iDqmKR5TtVazQNN9sl9gtDGhCjSTEWQ8Vh" style="margin-left:10px;border-radius: 50%;width:200px;height:200px" alt="Image 3" onclick="showForm('https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQZD56yx9T1n0jTH4iDqmKR5TtVazQNN9sl9gtDGhCjSTEWQ8Vh')">
-            <div class="role-name">Student</div>
-        </div>
+    .role-name {
+        font-size: 30px;
+        text-align: center;
+        text-decoration: underline;
+    }
+</style>
+<div id="images">
+    <div style="text-align: center;">
+        <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRwHsoSpUuSFDXu7aMkSs4K9IccU5rcuhZ6Wv3YJMP2uBAFtbwE" style="margin-left:10px;border-radius: 50%;width:200px;height:200px" alt="Image 1" onclick="redirectToFaculty()">
+        <div class="role-name">Faculty</div>
     </div>
 
-    <form style="margin-left: 400px" id="registrationForm">
-        <h2>Registration Form</h2>
-        <!-- Add your form fields here -->
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username"><br><br>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password"><br><br>
-        <input type="submit" value="Submit">
-    </form>
+    <div style="text-align: center;">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNtk5xpLylbMkOkAKQZcPTMzDVHxTHfLnTSUoVMXbRDYjLFIvH" style="margin-left:10px;border-radius: 50%;width:200px;height:200px" alt="Image 2" onclick="redirectToAdmin()">
+        <div class="role-name">Admin</div>
+    </div>
 
-    <script>
-        function showForm(imageSource, role) {
-            // Set the default values for the username and password fields based on the selected role
-            let usernameDefault = '';
-            let passwordDefault = '';
-            if (role === 'faculty') {
-                usernameDefault = '';
-                passwordDefault = '';
-            } else if (role === 'user') {
-                usernameDefault = '';
-                passwordDefault = '';
-            } else if (role === 'student') {
-                usernameDefault = '';
-                passwordDefault = '';
-            }
-        
-            // Update the HTML of the images div with the selected image
-            const images = document.getElementById('images');
-            images.innerHTML = `<img src="${imageSource}" style="margin-left:220px;border-radius: 50%;width:200px;height:200px" alt="Centered Image">`;
-        
-            // Display the registration form
-            const registrationForm = document.getElementById('registrationForm');
-            registrationForm.style.display = 'block';
-        
-            // Set the default values for the username and password fields
-            document.getElementById('username').value = usernameDefault;
-            document.getElementById('password').value = passwordDefault;
-        }
-    </script>
+    <div style="text-align: center;">
+        <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQZD56yx9T1n0jTH4iDqmKR5TtVazQNN9sl9gtDGhCjSTEWQ8Vh" style="margin-left:10px;border-radius: 50%;width:200px;height:200px" alt="Image 3" onclick="redirectToStudent()">
+        <div class="role-name">Student</div>
+    </div>
+</div>
+
+<script>
+    function redirectToFaculty() {
+        window.location.href = "fac.html";
+    }
+
+    function redirectToAdmin() {
+        window.location.href = "admin1.html";
+    }
+    
+    function redirectToStudent() {
+        window.location.href = "student.html";
+    }
+</script>
+
 {% endblock %}
-

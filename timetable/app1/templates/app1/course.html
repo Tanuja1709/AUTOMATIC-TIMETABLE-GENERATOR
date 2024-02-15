@@ -1,0 +1,129 @@
+<!-- my_template.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    /* CSS styles for the main content */
+    body {
+        display: flex;
+        flex-direction: column; /* Adjust to column layout for better alignment */
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+    }
+
+    .main-content {
+        padding: 20px;
+        text-align: center;
+        border: 1px solid #ccc;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+    }
+
+    .formField {
+        display: flex;
+        flex-direction: row; /* Display label and input fields in a row */
+        align-items: center; /* Center items vertically */
+        margin-bottom: 15px;
+        margin-top: 25px;
+    }
+
+    .formField label {
+        display: block;
+        font-weight: bold;
+        margin-right: 10px; /* Add spacing between label and input */
+        font-size: 18px; /* Increase font size */
+    }
+
+    .formField input {
+        width: 50%;
+        padding: 10px;
+        font-size: 16px; /* Increase font size */
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    #buttonContainer {
+        display: flex;
+        flex-wrap: wrap; /* Allow buttons to wrap to the next line */
+        justify-content: space-between;
+        margin-top: 20px;
+    }
+
+    .dialogButton {
+        width: 40%; /* Adjust the width to fit within the container */
+        height: 100%;
+        margin-bottom: 20px;
+        padding: 12px;
+        font-size: 18px; /* Increase font size */
+        background-color: #3498db;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .backLink {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        cursor: pointer;
+        color: #3498db;
+        text-decoration: none;
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+    }
+
+    p {
+        margin-top: 20px; /* Space between header and content */
+        font-size: 16px;
+        line-height: 2.6; /* Increased line height for better readability */
+    }
+</style>
+
+<!-- Form HTML -->
+<div class="main-content">
+    <a class="backLink" href="admin1.html">&#8592; Back</a>
+    <form id="courseForm" action="#">
+        <div class="formField">
+            <label for="courseId">Course ID:</label>
+            <input type="text" id="courseId" name="courseId" placeholder="Enter Course ID">
+        </div>
+        <div class="formField">
+            <label for="courseName">Course Name:</label>
+            <input type="text" id="courseName" name="courseName" placeholder="Enter Course Name">
+        </div>
+        <div id="buttonContainer">
+            <button class="dialogButton" type="button" onclick="addCourse()">Add Course</button>
+            <button class="dialogButton" type="button" onclick="viewCourses()">View Courses</button>
+            <button class="dialogButton" type="button" onclick="updateCourses()">Update Courses</button>
+            <button class="dialogButton" type="button" onclick="deleteCourses()">Delete Courses</button>
+        </div>
+    </form>
+</div>
+
+<script>
+    function addCourse() {
+        // Placeholder logic for adding a course
+        alert('Add Course logic goes here');
+    }
+
+    function viewCourses() {
+        // Placeholder logic for viewing courses
+        alert('View Courses logic goes here');
+    }
+
+    function updateCourses() {
+        // Placeholder logic for updating courses
+        alert('Update Courses logic goes here');
+    }
+
+    function deleteCourses() {
+        // Placeholder logic for deleting courses
+        alert('Delete Courses logic goes here');
+    }
+</script>
+{% endblock %}
